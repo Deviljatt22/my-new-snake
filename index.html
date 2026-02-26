@@ -1,191 +1,204 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<script type='text/javascript' src='//pl27216497.revenuecpmgate.com/b4/4d/ed/b44ded0a5e48eedea96a8a8e598c2d78.js'></script>    <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beyblade e-commerce App</title>
+    <title>Future Snake Pro | Kotlin-Style JS</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-pink: #ff007b;
+            --bg-dark: #050510;
         }
 
-        /* Header */
-        header {
-            background-color: #fff;
-            padding: 20px;
-            border-bottom: 1px solid #ddd;
+        body {
+            background-color: var(--bg-dark);
+            color: var(--neon-blue);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        #game-container {
+            position: relative;
+            padding: 10px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+            border-radius: 8px;
+        }
+
+        canvas {
+            display: block;
+            background: #000;
+        }
+
+        .stats-panel {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .logo {
-            font-size: 24px;
+            width: 400px;
+            margin-top: 15px;
             font-weight: bold;
-            color: #007bff;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-        .nav-links a:hover {
-            color: #007bff;
+            font-size: 1.2rem;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1200x400.png?text=Beyblade+Collection');
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            text-align: center;
-            padding: 100px 20px;
-            border-radius: 10px;
-            margin-top: 20px;
+        .glow-text {
+            text-shadow: 0 0 8px var(--neon-blue);
         }
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 20px;
-        }
-
-        /* Product Grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .product-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-        .product-card h3 {
-            margin-top: 0;
-            color: #007bff;
-        }
-        .product-card .price {
-            font-weight: bold;
-            color: #e91e63;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .buy-button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        .buy-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            margin-top: 40px;
-            border-radius: 10px;
-        }
-
     </style>
 </head>
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'ae71b3e6fc8b6e609790766ade474fbe',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/ae71b3e6fc8b6e609790766ade474fbe/invoke.js"></script>
 <body>
 
-    <header>
-        <div class="logo">Beyblade Store</div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">Cart</a>
-            <a href="#">Login/Signup</a>
-        </nav>
-    </header>
+    <div class="header">
+        <h1>FUTURE SNAKE <small style="font-size: 0.5em;">v2.0</small></h1>
+    </div>
 
-    <main class="container">
-        <section class="hero">
-            <h1>Unlock the Power of Beyblades</h1>
-            <p>Discover the latest and most powerful beyblades for your collection.</p>
-        </section>
+    <div id="game-container">
+        <canvas id="snakeGame" width="400" height="400"></canvas>
+    </div>
 
-        <section class="product-grid">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250.png?text=B-169+Starter+Variant+Lucifer" alt="B-169 Starter Variant Lucifer">
-                <h3>B-169 Starter Variant Lucifer</h3>
-                <p class="price">₹1,299</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250.png?text=B-170+Random+Booster+Vol.+22" alt="B-170 Random Booster Vol. 22">
-                <h3>B-170 Random Booster Vol. 22</h3>
-                <p class="price">₹1,050</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://via.placeholder.com/250x250.png?text=B-171+Triple+Booster" alt="B-171 Triple Booster Set">
-                <h3>B-171 Triple Booster Set</h3>
-                <p class="price">₹3,499</p>
-                <button class="buy-button">Buy Now</button>
-            </div>
+    <div class="stats-panel">
+        <div class="glow-text">SCORE: <span id="score">0</span></div>
+        <div class="glow-text">LEVEL: <span id="level">1</span></div>
+    </div>
 
-            </section>
-    </main>
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'ae71b3e6fc8b6e609790766ade474fbe',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/ae71b3e6fc8b6e609790766ade474fbe/invoke.js"></script>
+    <script>
+        // Game Logic in Clean Class-based Structure (Kotlin-style)
+        class GameEngine {
+            constructor() {
+                this.canvas = document.getElementById("snakeGame");
+                this.ctx = this.canvas.getContext("2d");
+                this.gridSize = 20;
+                this.tileCount = 20;
+                
+                this.reset();
+                this.setupControls();
+            }
 
-    <footer>
-        <p>&copy; 2025 Beyblade Store. All rights reserved.</p>
-    </footer>
-https://www.revenuecpmgate.com/gbwjkp46n?key=f4c3d96fb438328f1331bbd7004c19e9
+            reset() {
+                this.snake = [{x: 10, y: 10}, {x: 9, y: 10}, {x: 8, y: 10}];
+                this.food = {x: 5, y: 5};
+                this.dx = 1;
+                this.dy = 0;
+                this.score = 0;
+                this.level = 1;
+                this.speed = 120; // Initial speed in ms
+                this.isPaused = false;
+                
+                this.updateUI();
+                this.spawnFood();
+            }
+
+            setupControls() {
+                document.addEventListener("keydown", (e) => {
+                    const keys = { 37: [-1, 0], 38: [0, -1], 39: [1, 0], 40: [0, 1] };
+                    if (keys[e.keyCode]) {
+                        const [newDx, newDy] = keys[e.keyCode];
+                        // Prevent 180-degree turns
+                        if (newDx !== -this.dx && newDy !== -this.dy) {
+                            this.dx = newDx;
+                            this.dy = newDy;
+                        }
+                    }
+                });
+            }
+
+            spawnFood() {
+                this.food = {
+                    x: Math.floor(Math.random() * this.tileCount),
+                    y: Math.floor(Math.random() * this.tileCount)
+                };
+            }
+
+            draw() {
+                // 1. Clear Canvas with slight fade for motion blur
+                this.ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // 2. Draw Food (Neon Pulse)
+                this.ctx.shadowBlur = 15;
+                this.ctx.shadowColor = "#ff007b";
+                this.ctx.fillStyle = "#ff007b";
+                this.ctx.beginPath();
+                this.ctx.arc(this.food.x * this.gridSize + 10, this.food.y * this.gridSize + 10, 8, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                // 3. Draw Snake
+                this.snake.forEach((part, index) => {
+                    const isHead = index === 0;
+                    this.ctx.shadowBlur = isHead ? 20 : 0;
+                    this.ctx.shadowColor = "#00f2ff";
+                    this.ctx.fillStyle = isHead ? "#00f2ff" : "rgba(0, 242, 255, 0.5)";
+                    
+                    this.ctx.fillRect(
+                        part.x * this.gridSize + 1, 
+                        part.y * this.gridSize + 1, 
+                        this.gridSize - 2, 
+                        this.gridSize - 2
+                    );
+                });
+                this.ctx.shadowBlur = 0;
+            }
+
+            update() {
+                const head = { x: this.snake[0].x + this.dx, y: this.snake[0].y + this.dy };
+
+                // Collision Detection (Walls)
+                if (head.x < 0 || head.x >= this.tileCount || head.y < 0 || head.y >= this.tileCount) {
+                    return this.gameOver();
+                }
+
+                // Collision Detection (Self)
+                if (this.snake.some(p => p.x === head.x && p.y === head.y)) {
+                    return this.gameOver();
+                }
+
+                this.snake.unshift(head);
+
+                // Check Food
+                if (head.x === this.food.x && head.y === this.food.y) {
+                    this.score += 10;
+                    if (this.score % 50 === 0) {
+                        this.level++;
+                        this.speed = Math.max(50, this.speed - 10); // Faster!
+                    }
+                    this.updateUI();
+                    this.spawnFood();
+                } else {
+                    this.snake.pop();
+                }
+            }
+
+            updateUI() {
+                document.getElementById("score").innerText = this.score;
+                document.getElementById("level").innerText = this.level;
+            }
+
+            gameOver() {
+                alert(`MISSION FAILED!\nFinal Score: ${this.score}\nLevel Reached: ${this.level}`);
+                this.reset();
+            }
+
+            run() {
+                this.update();
+                this.draw();
+                setTimeout(() => this.run(), this.speed);
+            }
+        }
+
+        // Initialize Game
+        const game = new GameEngine();
+        game.run();
+    </script>
 </body>
 </html>
